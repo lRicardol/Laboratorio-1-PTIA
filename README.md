@@ -4,6 +4,10 @@
 ### PRINCIPIOS Y TECNOLOGÍAS IA 2025-2
 ### REDES NEURONALES
 ### LABORATORIO 1/4
+
+#### Ricardo Ayala
+#### Allan Contreras
+
 OBJETIVOS
 
 Desarrollar competencias básicas para:
@@ -66,10 +70,56 @@ Derivada función Sigmoide:
 
 Derivada función ReLU
 
-
+![Screenshot 2025-09-04 123923.png](Imag%2FScreenshot%202025-09-04%20123923.png)
 
 ---
 
 Derivada función de costo: Entropia Cruzada
 
+![Screenshot 2025-09-04 131931.png](Imag%2FScreenshot%202025-09-04%20131931.png)
+
+![Screenshot 2025-09-04 131940.png](Imag%2FScreenshot%202025-09-04%20131940.png)
+
+![Screenshot 2025-09-04 131948.png](Imag%2FScreenshot%202025-09-04%20131948.png)
+
 ---
+
+## Paso 2. Implementación del código para ANN (Dense)
+
+### LIBRERÍA NECESARIA
+
+    import numpy as np
+    from abc import ABC, abstractmethod
+
+### FUNCIONES DE BASE: MÉTRICA, COSTO Y ACTIVACIÓN
+
+![Screenshot 2025-09-04 132320.png](Imag%2FScreenshot%202025-09-04%20132320.png)
+
+### MÉTRICA
+
+```python
+class Metric(ABC):
+  """ Abstracta: define entradas, salidas y el comportamiento inicial de los métodos clave para cualquier metrica
+  Representa la metrica de una red neuronal
+  """
+  def use(self, name: str) -> self:
+    """ obtiene metrica (OBJ) a partir del nombre
+    Args:
+      name (str): nombre esperado de la metrica
+    Returns:
+      self (Metric): objeto metrica
+    """
+    pass
+
+  def value(self, Y: np.ndarray, Yp:np.ndarray):
+    """ computa el desempeño (accuracy) de la red (> 0.6 es 1)
+    Args:
+      Y (ndarray): valores de salidas esperadas (etiquetadas)
+      Yp (ndarray): valores de salidas obtenidas
+    Return:
+      A (float): valor del desempeño
+    """
+    pass
+```
+
+
