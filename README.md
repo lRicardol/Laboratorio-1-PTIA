@@ -977,11 +977,12 @@ resumen_resultados.json
 - <img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/1804af95-b373-48f7-8a19-00c4608c12cd" />
 - <img width="1731" height="857" alt="image" src="https://github.com/user-attachments/assets/0da68b06-bbad-4ca1-95e1-3f870b455012" />
 - <img width="1569" height="809" alt="image" src="https://github.com/user-attachments/assets/b8b8a3e2-61e5-4cf6-aa95-8eec62f9aa7f" />
+- <img width="1454" height="945" alt="image" src="https://github.com/user-attachments/assets/df6a45b5-ebde-4988-bc30-8671a88925a6" />
+- <img width="1500" height="991" alt="image" src="https://github.com/user-attachments/assets/3aaeb618-d6db-4894-ad6f-7a962f449f81" />
 
-
-
-
-
+- <img width="1522" height="872" alt="image" src="https://github.com/user-attachments/assets/e4ff3f19-87a5-4773-bdb8-7a389c92a93a" />
+- <img width="1500" height="987" alt="image" src="https://github.com/user-attachments/assets/e6013b7c-e36a-46de-800d-8bdc71b29cf9" />
+- <img width="1337" height="984" alt="image" src="https://github.com/user-attachments/assets/03ff6247-63bf-46b3-af9b-986087e2d44d" />
 
 - Paso 4 – Conclusiones
 ``` txt
