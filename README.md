@@ -312,3 +312,145 @@ if __name__ == "__main__":
 ---
 
 ![Screenshot 2025-09-04 142301.png](Imag%2FScreenshot%202025-09-04%20142301.png)
+
+
+## PARTE 2. USO DE FRAMEWORK PARA REDES NEURONALES
+- Paso 1 – Definir problema
+  
+``` txt
+Descripción:
+Queremos construir un clasificador automático que, a partir de medidas de longitud y ancho de sépalos y pétalos, prediga la especie de flor iris.
+
+Variable objetivo (target):
+species
+
+Clases:
+
+setosa
+
+versicolor
+
+virginica
+
+Métrica:
+Accuracy (precisión)
+
+Umbral mínimo aceptado:
+85% 
+ ```
+- Paso 2 – Explorar y preparar
+``` txt
+EDA realizado:
+
+info(): 150 filas × 5 columnas, sin valores nulos.
+
+describe(): estadísticas numéricas de sépalos y pétalos.
+
+Distribución de clases: balanceada (50 ejemplos por especie).
+
+Correlación: alta correlación entre largo/ancho de pétalos y la especie.
+
+División de datos:
+
+Train: 70% (105 muestras)
+
+Validación: 10% (15 muestras)
+
+Test: 20% (30 muestras)
+con estratificación para mantener balance entre clases.
+
+Preprocesamiento (ColumnTransformer):
+
+Numéricas (sepal_length, sepal_width, petal_length, petal_width):
+
+Imputación (mediana)
+
+Escalado estándar (StandardScaler)
+
+Categóricas (ninguna en este caso, salvo target que va codificada con LabelEncoder):
+
+Imputación (moda)
+
+OneHotEncoder
+
+✅ Se guarda el preprocesador.joblib y el label_encoder.joblib para reproducir predicciones.
+```
+- Paso 3 – Desarrollar la red
+``` txt
+  Arquitectura (modelo secuencial):
+
+Capa densa (ReLU)
+
+Dropout
+
+Capa densa (ReLU)
+
+Dropout
+
+Capa de salida con softmax (3 clases, multiclase)
+
+Pérdida: sparse_categorical_crossentropy
+
+Entrenamiento:
+
+Callbacks: EarlyStopping y ModelCheckpoint
+
+Se guarda best_model.keras
+
+Métricas y resultados:
+
+Curvas de aprendizaje (03_learning_curves_accuracy.png, 04_learning_curves_loss.png)
+
+Accuracy de validación: > 90%
+
+Evaluación en test:
+
+classification_report con precisión, recall y f1-score
+
+accuracy final > 90%
+
+Matriz de confusión (05_confusion_matrix.png)
+
+Artefactos en resultados/:
+
+best_model.keras
+
+preprocesador.joblib
+
+label_encoder.joblib
+
+01_distribucion_clases.png
+
+02_correlacion.png
+
+03_learning_curves_accuracy.png
+
+04_learning_curves_loss.png
+
+05_confusion_matrix.png
+
+resumen_resultados.json
+```
+- Paso 4 – Conclusiones
+``` txt
+  El modelo logró superar el umbral de desempeño planteado (85% de accuracy),
+alcanzando una precisión superior al 90% en el conjunto de prueba. Esto valida que la red neuronal propuesta es adecuada para la tarea de clasificación de flores Iris.
+
+La exploración de datos mostró un dataset balanceado, con 50 ejemplos por clase (setosa, versicolor, virginica),
+ lo cual facilitó el entrenamiento y evitó problemas de desbalance de clases.
+
+Las variables más discriminativas fueron las medidas de los pétalos, en particular largo y ancho,
+que presentaron correlaciones altas con la especie. Esto coincide con la literatura clásica del dataset Iris.
+
+El preprocesamiento fue clave para estandarizar las variables numéricas y garantizar que la red neuronal trabajara con valores comparables.
+ La separación estratificada en train/valid/test permitió evaluar el modelo de manera justa.
+
+El uso de callbacks (EarlyStopping y ModelCheckpoint) permitió evitar sobreajuste, guardando automáticamente el mejor modelo entrenado.
+ Esto asegura reproducibilidad y un desempeño óptimo en producción.
+
+El flujo completo generó artefactos reutilizables (best_model.keras, preprocesador.joblib, label_encoder.joblib, gráficas y resumen en JSON),
+ lo cual facilita tanto la trazabilidad como el despliegue futuro del modelo.
+
+En conclusión, el pipeline de clasificación desarrollado es robusto, replicable y extensible a otros problemas de clasificación multiclase,
+ siempre que se disponga de un dataset estructurado con suficientes ejemplos por clase.
+```
