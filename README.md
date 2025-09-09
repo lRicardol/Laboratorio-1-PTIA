@@ -344,7 +344,7 @@ Umbral mínimo aceptado:
 # -*- coding: utf-8 -*-
 """
 Plantilla completa: Clasificación con Keras (API Secuencial)
-Autor: (tu nombre)
+
 Uso:
   python keras_clasificacion_template.py --data data/dataset.csv --target nombre_columna_objetivo --sep ,
 
